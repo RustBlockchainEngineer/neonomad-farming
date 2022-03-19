@@ -1,0 +1,16 @@
+{
+  "name": "cropperfinance-smart-contract",
+  "version": "1.0.0",
+  "scripts": {
+    "push":"git add . && git commit -m 'auto updates' && git push",
+    "switch-localnet":"solana config set --url localhost",
+    "switch-devnet":"solana config set --url devnet",
+    "switch-testnet":"solana config set --url testnet",
+    "switch-mainnet-beta":"solana config set --url mainnet-beta",
+    "start-server": "solana-test-validator",
+    "build:devnet": "cargo build-bpf --manifest-path=./contracts/yield-farming-v1/program/Cargo.toml --bpf-out-dir=dist --features devnet",
+    "build:mainnet": "cargo build-bpf --manifest-path=./contracts/yield-farming-v1/program/Cargo.toml --bpf-out-dir=dist",
+    "clean": "cargo clean --manifest-path=./contracts/yield-farming-v1/program/Cargo.toml && rm -rf ./dist",
+    "test": "cargo test-bpf --manifest-path=./contracts/yield-farming-v1/program/Cargo.toml"
+  }
+}

@@ -1,0 +1,8 @@
+/node_modules
+*.sw[po]
+/.cargo
+.env
+src/client/util/store
+/test-ledger
+package.lock
+/dist
