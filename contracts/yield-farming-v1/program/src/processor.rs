@@ -353,6 +353,10 @@ impl Processor {
             return Err(FarmError::SignatureMissing.into());
         }
 
+        if *creator_info.key != program_data.super_owner {
+            return Err(FarmError::InvalidOwner.into());
+        }
+
         // check if given farm was initialized already
         if !Self::is_zero_account(farm_id_info) {
             return Err(FarmError::AlreadyInUse.into());
@@ -436,7 +440,7 @@ impl Processor {
         
         // Initialize farm account data
         // if not CRP token pairing,this farm is not allowed until creator pays farm fee
-        farm_pool.set_allowed(Self::is_allowed(amm_swap.token_a_mint(), amm_swap.token_b_mint())?);
+        farm_pool.set_allowed(1);
 
         // owner of this farm - creator
         farm_pool.owner = *creator_info.key;
